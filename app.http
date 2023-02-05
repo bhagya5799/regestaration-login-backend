@@ -1,0 +1,65 @@
+post  http://localhost:3000/
+Content-Type: application/json
+
+
+{
+    "name": "bhagya",
+    "email": "bhagya818gmail.com",
+    "id":"1",
+    "password":"bhagya123"
+}
+
+
+
+###
+post  http://localhost:3000/login
+Content-Type: application/json
+
+
+{
+    "email": "bhagya818gmail.com",
+    "password":"bhagya1239"
+}
+
+
+### 
+post http://localhost:3000/admin
+Content-Type: application/json
+
+
+{
+    "name": "admin",
+    "email": "admin1234@gmail.com",
+    "id":"1",
+    "password":"admin12"
+}
+
+
+
+###
+get http://localhost:3000/
+
+
+
+###
+get http://localhost:3000/getOneData/1
+
+
+
+
+
+
+###
+put  http://localhost:3000/update/1
+Content-Type: application/json
+
+
+{
+    "name": "bhagyaShree",
+    "email": "lbhagya818gmail.com",
+    "password":"bhagya1234"
+}
+
+
+### 
+delete  http://localhost:3000/delete/63dfa644bb5a3335f6aa8315
