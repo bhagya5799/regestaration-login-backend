@@ -15,7 +15,7 @@ const mongooseData = mongoose.connect('mongodb+srv://bhagyashree:bhagya5799@clus
 
 app.use(cors())
 
-
+// user send details
 app.post("/", async(request,response) =>{
     const { name, password,email,id} = request.body
 
@@ -45,7 +45,7 @@ app.post("/", async(request,response) =>{
     }
 })
 
-// admin post details
+// admin post details registration
 app.post("/admin", async (request, response) => {
     const { name, password, email, id } = request.body
 
@@ -74,22 +74,24 @@ app.post("/admin", async (request, response) => {
 })
 
 
-// login purpose
+// user login purpose
 app.post('/login', async(request,response) =>{
     const { password, email} = request.body
     try {
         const getPassword = await RegistrationData.find({password:password})
         const getEmail = await RegistrationData.find({ email: email })
         if (getPassword.length ==0){
-            response.send("In valid Password") 
+            response.send({ status: false, msg: "In valid Password"}) 
+            response.status(400)
          
         }
         if (getEmail.length == 0) {
-            response.send("In valid Email")
+            response.send({ status: false, msg: "In valid Email"})
+            response.status(400)
 
         } 
         else{
-            response.send('login Successfully')
+            response.send({ status: true, msg: "login successfull" })
         }
 
     }
@@ -99,22 +101,25 @@ app.post('/login', async(request,response) =>{
 
 })
 
-// admin registration
+// admin login
 app.post('/adminLogin', async (request, response) => {
     const { password, email } = request.body
     try {
         const getPassword = await AdminData.find({ password: password })
         const getEmail = await AdminData.find({ email: email })
         if (getPassword.length == 0) {
-            response.send("In valid Password")
+            response.send({ status: false, msg: "In valid Password" }) 
+            response.status(400)
 
         }
         if (getEmail.length == 0) {
-            response.send("In valid Email")
+            response.send({ status: false, msg: "In valid Email" })
+            response.status(400)
 
         }
         else {
-            response.send('login Successfully')
+            // response.send('login Successfully')
+            response.send({ status: true, msg: "adminLogin  success" })
         }
 
     }
@@ -123,6 +128,7 @@ app.post('/adminLogin', async (request, response) => {
     }
 
 })
+
 
 // user get all
 app.get('/', async(require,response)=>{
@@ -178,5 +184,5 @@ app.delete('/delete/:id', async (request, response) => {
 })
 
 
-app.listen(process.env.PORT || 3000, () => console.log('running'))
+app.listen(process.env.PORT || 3009, () => console.log('running'))
 

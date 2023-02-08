@@ -1,4 +1,4 @@
-post  http://localhost:3000/
+post  http://localhost:3009/
 Content-Type: application/json
 
 
@@ -12,18 +12,18 @@ Content-Type: application/json
 
 
 ###
-post  http://localhost:3000/login
+post  http://localhost:3009/login
 Content-Type: application/json
 
 
 {
     "email": "bhagya818gmail.com",
-    "password":"bhagya1239"
+    "password":"bhagya123"
 }
 
 
 ### 
-post http://localhost:3000/admin
+post http://localhost:3009/admin
 Content-Type: application/json
 
 
@@ -35,22 +35,33 @@ Content-Type: application/json
 }
 
 
-
 ###
-get http://localhost:3000/
+post  http://localhost:3009/adminLogin
+Content-Type: application/json
 
 
-
-###
-get http://localhost:3000/getOneData/1
-
-
-
+{
+    "email": "admin1234@gmail.com",
+    "password":"admin12"
+}
 
 
 
 ###
-put  http://localhost:3000/update/1
+get http://localhost:3009/
+
+
+
+###
+get http://localhost:3009/getOneData/1
+
+
+
+
+
+
+###
+put  http://localhost:3009/update/1
 Content-Type: application/json
 
 
@@ -62,4 +73,4 @@ Content-Type: application/json
 
 
 ### 
-delete  http://localhost:3000/delete/63dfa644bb5a3335f6aa8315
+delete  http://localhost:3009/delete/63dfa644bb5a3335f6aa8315
