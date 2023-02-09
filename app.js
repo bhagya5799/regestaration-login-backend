@@ -3,6 +3,7 @@ const express = require('express')
 const mongoose = require('mongoose')
 const RegistrationData = require('./model')
 const AdminData = require('./admin')
+const QuestionsData = require('./questions')
 const cors = require('cors')
 const app = express()
 app.use(express.json())
@@ -71,14 +72,37 @@ app.post("/admin", async (request, response) => {
 })
 
 
+// question Details
+app.post("/question", async (request, response) => {
+    const { question, masterName, masterId, id } = request.body
+
+    try {
+        const newData = new QuestionsData({ question, masterName, masterId, id })
+        await newData.save()
+        response.send({ status: true, msg: "update successful"})
+    }
+    catch (err) {
+        console.log(err.message)
+        
+    }
+})
+
+
+
+
 // user login purpose
 app.post('/login', async (request, response) => {
-    const { password, email } = request.body
+    const { password, email} = request.body
     try {
         const getPassword = await RegistrationData.find({ password: password })
         const getEmail = await RegistrationData.find({ email: email })
+        let id=null
+        getEmail.map(each =>{
+            id=each.id
+        })
+      
         if (getPassword.length == 0) {
-            response.send({ status: false, msg: "In valid Password" })
+            response.send({ status: false, msg: "In valid Password"})
             response.status(400)
 
         }
@@ -88,7 +112,7 @@ app.post('/login', async (request, response) => {
 
         }
         else {
-            response.send({ status: true, msg: "login successfull" })
+            response.send({ status: true, msg: "login successful" ,id:id})
         }
 
     }
@@ -100,10 +124,14 @@ app.post('/login', async (request, response) => {
 
 // admin login
 app.post('/adminLogin', async (request, response) => {
-    const { password, email } = request.body
+    const { password, email} = request.body
     try {
         const getPassword = await AdminData.find({ password: password })
         const getEmail = await AdminData.find({ email: email })
+        let id=null;
+        getEmail.map(each => {
+            id=each.id
+        })
         if (getPassword.length == 0) {
             response.send({ status: false, msg: "In valid Password" })
             response.status(400)
@@ -116,7 +144,7 @@ app.post('/adminLogin', async (request, response) => {
         }
         else {
             // response.send('login Successfully')
-            response.send({ status: true, msg: "adminLogin  success" })
+            response.send({ status: true, msg: "adminLogin  success" ,id:id})
         }
 
     }
@@ -136,6 +164,32 @@ app.get('/', async (require, response) => {
     catch (err) {
         response.send(err.message)
     }
+})
+
+
+// get all question
+app.get('/all-questions', async (require, response) => {
+    try {
+        const getData = await QuestionsData.find()
+        response.send(getData)
+    }
+    catch (err) {
+        response.send(err.message)
+    }
+})
+
+
+// get paricular question id
+app.get('/getMaster-question/:id', async (request, response) => {
+    const { id } = request.params
+    try {
+        const idVal = await QuestionsData.find({ id: id })
+        response.send(idVal)
+    }
+    catch (err) {
+        console.log(err.message)
+    }
+
 })
 
 

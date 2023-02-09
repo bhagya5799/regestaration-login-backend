@@ -48,6 +48,8 @@ Content-Type: application/json
 
 
 
+
+
 ###
 get http://localhost:3009/
 
@@ -75,3 +77,27 @@ Content-Type: application/json
 
 ### 
 delete  http://localhost:3009/delete/63dfa644bb5a3335f6aa8315
+
+
+
+###
+post  http://localhost:3009/question
+Content-Type: application/json
+
+
+{
+    "question": "what is capital of india",
+    "masterName": "bhagya",
+    "id":"2",
+    "masterId":"2"
+}
+
+
+###
+get http://localhost:3009/getMaster-question/2
+
+
+
+###
+
+get http://localhost:3009/all-questions
