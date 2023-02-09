@@ -234,5 +234,18 @@ app.delete('/delete/:id', async (request, response) => {
     }
 })
 
+app.get('/get-full-data/:id', async (request, response) => {
+    const { id } = request.params
+    try {
+        const idVal = await AdminData.find({ id: id })
+        response.send(idVal)
+    }
+    catch (err) {
+        console.log(err.message)
+    }
+
+})
+
+
 
 app.listen(process.env.PORT || 3009, () => console.log('running'))

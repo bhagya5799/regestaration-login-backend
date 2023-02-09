@@ -29,10 +29,10 @@ Content-Type: application/json
 
 
 {
-    "name": "admin",
-    "email": "admin1234@gmail.com",
-    "id":"1",
-    "password":"admin12"
+    "name": "pachu",
+    "email": "pachu@gmail.com",
+    "id":"3",
+    "password":"pachu123"
 }
 
 
@@ -86,10 +86,10 @@ Content-Type: application/json
 
 
 {
-    "question": "what is capital of india",
-    "masterName": "bhagya",
-    "id":"2",
-    "masterId":"2"
+    "question": "rose means?",
+    "masterName": "pachu",
+    "id":"3",
+    "masterId":"3"
 }
 
 
@@ -101,3 +101,7 @@ get http://localhost:3009/getMaster-question/2
 ###
 
 get http://localhost:3009/all-questions
+
+
+###
+get http://localhost:3009/get-full-data/1
