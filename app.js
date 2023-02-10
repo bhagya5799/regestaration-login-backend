@@ -182,12 +182,19 @@ app.get('/all-questions', async (require, response) => {
 // get paricular question id
 app.get('/getMaster-question/:id', async (request, response) => {
     const { id } = request.params
+    // try {
+    //     const idVal = await QuestionsData.find({ id: id })
+    //     response.send(idVal)
+    // }
+    // catch (err) {
+    //     console.log(err.message)
+    // }
     try {
-        const idVal = await QuestionsData.find({ id: id })
-        response.send(idVal)
+        const getData = await QuestionsData.find({masterId:id})
+        response.send(getData)
     }
     catch (err) {
-        console.log(err.message)
+        response.send(err.message)
     }
 
 })

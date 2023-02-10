@@ -48,8 +48,6 @@ Content-Type: application/json
 
 
 
-
-
 ###
 get http://localhost:3009/
 
@@ -94,7 +92,7 @@ Content-Type: application/json
 
 
 ###
-get http://localhost:3009/getMaster-question/2
+get http://localhost:3009/getMaster-question/6239e959-5741-4b6b-99c5-faa55d730e99
 
 
 
@@ -104,4 +102,4 @@ get http://localhost:3009/all-questions
 
 
 ###
-get http://localhost:3009/get-full-data/1
+get http://localhost:3009/get-full-data/
