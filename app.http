@@ -4,7 +4,7 @@ Content-Type: application/json
 
 {
     "name": "bhagya",
-    "email": "bhagya818gmail.com",
+    "email": "bhagya818@gmail.com",
     "id":"1",
     "password":"bhagya123"
 }
@@ -17,7 +17,7 @@ Content-Type: application/json
 
 
 {
-    "email": "bhagya818gmail.com",
+    "email": "bhagya818@gmail.com",
     "password":"bhagya123"
 }
 
@@ -74,7 +74,7 @@ Content-Type: application/json
 
 
 ### 
-delete  http://localhost:3009/delete/63dfa644bb5a3335f6aa8315
+delete  http://localhost:3009/delete/1
 
 
 
