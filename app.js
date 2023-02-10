@@ -255,6 +255,17 @@ app.get('/get-full-data/:id', async (request, response) => {
 
 })
 
+// delete question
+app.delete('/delete-question/:id', async (request, response) => {
+    const { id } = request.params
+    try {
+        await QuestionsData.deleteOne({ id: id })
+        response.send({ status: true, msg: "Delete successful" })
+    }
+    catch (err) {
+        console.log(err.message)
+    }
+})
 
 
 app.listen(process.env.PORT || 3009, () => console.log('running'))

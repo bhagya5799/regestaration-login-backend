@@ -102,7 +102,11 @@ get http://localhost:3009/all-questions
 
 
 ###
-get http://localhost:3009/get-full-data/1
+get http://localhost:3009/get-full-data/3
 
 ###
 get http://localhost:3009/all-admins
+
+
+###
+delete http://localhost:3009/delete-question/1
