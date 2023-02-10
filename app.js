@@ -4,7 +4,8 @@ const mongoose = require('mongoose')
 const RegistrationData = require('./model')
 const AdminData = require('./admin')
 const QuestionsData = require('./questions')
-const cors = require('cors')
+const cors = require('cors');
+const admin = require('./admin');
 const app = express()
 app.use(express.json())
 app.use(cors())
@@ -178,17 +179,20 @@ app.get('/all-questions', async (require, response) => {
     }
 })
 
+// get all admin
+app.get('/all-admins', async (require, response) => {
+    try {
+        const getData = await AdminData.find()
+        response.send(getData)
+    }
+    catch (err) {
+        response.send(err.message)
+    }
+})
 
 // get paricular question id
 app.get('/getMaster-question/:id', async (request, response) => {
     const { id } = request.params
-    // try {
-    //     const idVal = await QuestionsData.find({ id: id })
-    //     response.send(idVal)
-    // }
-    // catch (err) {
-    //     console.log(err.message)
-    // }
     try {
         const getData = await QuestionsData.find({masterId:id})
         response.send(getData)
@@ -198,7 +202,6 @@ app.get('/getMaster-question/:id', async (request, response) => {
     }
 
 })
-
 
 
 app.get('/getOneData/:id', async (request, response) => {
@@ -215,7 +218,6 @@ app.get('/getOneData/:id', async (request, response) => {
 
 
 app.put('/update/:id', async (request, response) => {
-
     const { id } = request.params
     try {
         await RegistrationData.findOneAndUpdate({ id: id }, request.body)
