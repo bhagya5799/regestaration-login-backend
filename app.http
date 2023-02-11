@@ -29,10 +29,10 @@ Content-Type: application/json
 
 
 {
-    "name": "pachu",
-    "email": "pachu@gmail.com",
-    "id":"3",
-    "password":"pachu123"
+    "name": "admin",
+    "email": "admin123@gmail.com",
+    "id":"1",
+    "password":"admin"
 }
 
 
@@ -74,7 +74,7 @@ Content-Type: application/json
 
 
 ### 
-delete  http://localhost:3009/delete/1
+delete  http://localhost:3009/delete/
 
 
 
